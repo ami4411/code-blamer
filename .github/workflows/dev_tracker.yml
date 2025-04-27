@@ -1,0 +1,25 @@
+name: Track Python Function Changes
+
+on:
+  push:
+    paths:
+      - '**.py'  
+
+jobs:
+  track-changes:
+    runs-on: ubuntu-latest  
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run function change tracker script
+        run: |
+          python tracker.py log_dev_tracker.py
