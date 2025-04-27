@@ -1,0 +1,23 @@
+name: "Output Function Change Logger (Python Version)"
+description: "GitHub Action to detect modified output functions and attribute changes to the developer, implemented in Python."
+author: "ami4411"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Run Python Detection Script
+      shell: bash
+      run: |
+        python3 tracker.py yourfilenamehere.py
+
+branding:
+  icon: "search"
+  color: "blue"
